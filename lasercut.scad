@@ -14,7 +14,7 @@ if (generate == 1)
 }
 
 
-module lasercutoutSquare(thickness=3.1, x=0, y=0, 
+module lasercutoutSquare(thickness, x=0, y=0,
         simple_tabs=[], simple_tab_holes=[], 
         captive_nuts=[], captive_nut_holes = [],
         finger_joints = [],
@@ -49,7 +49,7 @@ lasercutout(thickness=thickness,
     );
 }
 
-module lasercutout(thickness=3.1,  points= [], 
+module lasercutout(thickness,  points= [],
         simple_tabs=[], simple_tab_holes=[], 
         captive_nuts=[], captive_nut_holes = [],
         finger_joints = [],
@@ -469,7 +469,7 @@ module simpleCutouts(x, y, width, height, thickness)
      translate([x,y,0]) rotate([0,0,0]) translate([0,0,-thickness]) cube([width, height, thickness*3]);     
 }
 
-module lasercutoutBox(thickness = 3.1, x=0, y=0, z=0, sides=6,
+module lasercutoutBox(thickness, x=0, y=0, z=0, sides=6,
         simple_tab_holes_a=[], 
         captive_nuts_a=[], captive_nut_holes_a=[],
         screw_tab_holes_a=[],
@@ -556,7 +556,7 @@ module lasercutoutBox(thickness = 3.1, x=0, y=0, z=0, sides=6,
 }
 
 
-module lasercutoutBoxAdjustedFJ(thickness = 3.1, x=0, y=0, z=0, sides=6, fj=[], st=[],
+module lasercutoutBoxAdjustedFJ(thickness, x=0, y=0, z=0, sides=6, fj=[], st=[],
         simple_tab_holes_a=[], 
         captive_nuts_a=[], captive_nut_holes_a = [],
         circles_add_a = [],
@@ -564,7 +564,7 @@ module lasercutoutBoxAdjustedFJ(thickness = 3.1, x=0, y=0, z=0, sides=6, fj=[], 
         slits_a = [],
         cutouts_a = [])
 {
-    translate([0,0,0]) lasercutoutSquare(x=x, y=y, simple_tabs = st[0], finger_joints = fj[0],
+    translate([0,0,0]) lasercutoutSquare(thickness=thickness, x=x, y=y, simple_tabs = st[0], finger_joints = fj[0],
                                 simple_tab_holes=simple_tab_holes_a[0], captive_nuts=captive_nuts_a[0],
                                 captive_nut_holes = captive_nut_holes_a[0],
                                 screw_tab_holes = screw_tab_holes_a[0],
@@ -574,7 +574,7 @@ module lasercutoutBoxAdjustedFJ(thickness = 3.1, x=0, y=0, z=0, sides=6, fj=[], 
                                 slits = slits_a[0],
                                 cutouts = cutouts_a[0]);
 
-    translate([0,0,z+thickness]) lasercutoutSquare(x=x, y=y, simple_tabs = st[1], finger_joints = fj[1],
+    translate([0,0,z+thickness]) lasercutoutSquare(thickness=thickness, x=x, y=y, simple_tabs = st[1], finger_joints = fj[1],
                                 simple_tab_holes=simple_tab_holes_a[1], captive_nuts=captive_nuts_a[1],
                                 captive_nut_holes = captive_nut_holes_a[1],
                                 screw_tab_holes = screw_tab_holes_a[1],
@@ -584,7 +584,7 @@ module lasercutoutBoxAdjustedFJ(thickness = 3.1, x=0, y=0, z=0, sides=6, fj=[], 
                                 slits = slits_a[1],
                                 cutouts = cutouts_a[1]);
 
-    translate([0,0,thickness]) rotate([90,0,0]) lasercutoutSquare(x=x, y=z, finger_joints = fj[2],
+    translate([0,0,thickness]) rotate([90,0,0]) lasercutoutSquare(thickness=thickness, x=x, y=z, finger_joints = fj[2],
                                 simple_tab_holes=simple_tab_holes_a[2], captive_nuts=captive_nuts_a[2],
                                 captive_nut_holes = captive_nut_holes_a[2],
                                 screw_tab_holes = screw_tab_holes_a[2],
@@ -594,7 +594,7 @@ module lasercutoutBoxAdjustedFJ(thickness = 3.1, x=0, y=0, z=0, sides=6, fj=[], 
                                 slits = slits_a[2],
                                 cutouts = cutouts_a[2]);
 
-    translate([0,y+thickness,thickness]) rotate([90,0,0]) lasercutoutSquare(x=x, y=z, simple_tabs = st[2], 
+    translate([0,y+thickness,thickness]) rotate([90,0,0]) lasercutoutSquare(thickness=thickness, x=x, y=z, simple_tabs = st[2],
                                 finger_joints = fj[3],
                                 simple_tab_holes=simple_tab_holes_a[3], captive_nuts=captive_nuts_a[3],
                                 captive_nut_holes = captive_nut_holes_a[3],
@@ -607,7 +607,7 @@ module lasercutoutBoxAdjustedFJ(thickness = 3.1, x=0, y=0, z=0, sides=6, fj=[], 
     
     if (sides>4)
     {
-        translate([0,0,thickness]) rotate([0,-90,0]) lasercutoutSquare(x=z, y=y, finger_joints = fj[4],
+        translate([0,0,thickness]) rotate([0,-90,0]) lasercutoutSquare(thickness=thickness, x=z, y=y, finger_joints = fj[4],
                                 simple_tab_holes=simple_tab_holes_a[4], captive_nuts=captive_nuts_a[4],
                                 captive_nut_holes = captive_nut_holes_a[4],
                                 screw_tab_holes = screw_tab_holes_a[4],
@@ -620,7 +620,7 @@ module lasercutoutBoxAdjustedFJ(thickness = 3.1, x=0, y=0, z=0, sides=6, fj=[], 
     
     if (sides>5)
     {
-        translate([x+thickness,0,thickness]) rotate([0,-90,0]) lasercutoutSquare(x=z, y=y, 
+        translate([x+thickness,0,thickness]) rotate([0,-90,0]) lasercutoutSquare(thickness=thickness, x=z, y=y,
                                 simple_tabs = st[3], finger_joints = fj[5],
                                 simple_tab_holes=simple_tab_holes_a[5], captive_nuts=captive_nuts_a[5],
                                 captive_nut_holes = captive_nut_holes_a[5],
